@@ -23,3 +23,7 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script src="/js/app.js"></script>
+@endpush
