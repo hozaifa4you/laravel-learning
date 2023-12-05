@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('main');
+    return view('pages.home');
 })->name('home');
 
 Route::prefix('posts')->group(function () {
     // get all posts
     Route::get('/', function () {
-        return view('posts');
+        return view('pages.posts');
     })->name('posts');
     // get single post vie id
     Route::get('/{post_id?}', function (
@@ -37,10 +37,16 @@ Route::prefix('posts')->group(function () {
     // create new post
     Route::get('/create', function () {
         return view('create-post');
-    });
+    })->name('create');
 });
 
+Route::get('/about', function () {
+    return view('pages.about');
+})->name('about');
 
+Route::get('/contact', function () {
+    return view('pages.contact');
+})->name('contact');
 
 
 
