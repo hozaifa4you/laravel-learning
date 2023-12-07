@@ -1,25 +1,12 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
- */
-
-$user = [
-  "name" => "Yousuf Ahamd",
-  "email" => "yousuf360.ya@gmail.ocm",
-  "age" => 28,
-  "mobile" => "01918780770",
-  "address" => "Satkhira",
-];
 
 Route::get('/', function () {
   return view('pages.home');
@@ -27,59 +14,27 @@ Route::get('/', function () {
 
 Route::prefix('posts')->group(function () {
   // get all posts
-  Route::get('/', function () {
-    return view('pages.posts');
-  })->name('posts');
+  Route::get('/', [PostsController::class, 'all_posts'])->name('posts');
 
   // get single post vie id
-  Route::get('/{post_id?}', function (
-    string $post_id
-  ) {
-    return view('pages.post');
-  })
+  Route::get('/{post_id?}', [PostsController::class, 'single_post'])
     ->whereAlphaNumeric('post_id')
     ->name("post");
 
   // create new post
-  Route::get('/create', function () {
-    return view('create-post');
-  })->name('create');
+  Route::get('/create', [PostsController::class, 'create_post'])->name('create');
 });
 
-Route::get('/about', function () {
-  return view('pages.about');
-})->name('about');
+Route::get('/about', [AboutController::class, 'about'])->name('about');
 
-Route::get('/contact', function () {
-  return view('pages.contact');
-})->name('contact');
+Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
 
 // TODO: Users Routes
 Route::prefix('/users')->group(function () {
-  Route::get('/', function () {
-    $users = [
-      1 => ['id' => 1, 'name' => 'Yousuf Ahamad', 'age' => 28, 'education' => 'BSc at CSE'],
-      2 => ['id' => 2, 'name' => 'Anamul Hasan', 'age' => 20, 'education' => 'Enter'],
-      3 => ['id' => 3, 'name' => 'Niloy Jamil', 'age' => 31, 'education' => 'Honor\'s at BBA'],
-    ];
-
-    return view('pages.users', ['users' => $users]);
-  })->name('users.all');
+  Route::get('/', [UsersController::class, 'users'])->name('users.all');
 });
 
-Route::get('/user', function () {
-  $user = [
-    "name" => "Yousuf Ahamd",
-    "email" => "yousuf360.ya@gmail.ocm",
-    "age" => 28,
-    "mobile" => "01918780770",
-    "address" => "Satkhira",
-    "brothers" => ["Anamul Hasan", "Ather Rahman", "Ibrahim Khalil", "Niloy Jamil", "Abu Huraira"],
-    "city" => ["Dhaka", "Chattogram", "Satkhira", "Khulna"]
-  ];
-
-  return view('pages.user', ['user' => $user]);
-})->name('user');
+Route::get('/user', [UserController::class, 'user'])->name('user');
 
 
 // TODO: special routes
