@@ -13,27 +13,22 @@ Route::get('/', function () {
 })->name('home');
 
 Route::prefix('posts')->group(function () {
-  // get all posts
-  Route::get('/', [PostsController::class, 'all_posts'])->name('posts');
-
-  // get single post vie id
-  Route::get('/{post_id?}', [PostsController::class, 'single_post'])
-    ->whereAlphaNumeric('post_id')
-    ->name("post");
-
-  // create new post
-  Route::get('/create', [PostsController::class, 'create_post'])->name('create');
+  Route::controller(PostsController::class)->group(function () {
+    Route::get('/', 'all_posts')->name('posts');
+    Route::get('/{post_id?}', 'single_post')
+      ->whereAlphaNumeric('post_id')
+      ->name("post");
+    Route::get('/create', 'create_post')->name('create');
+  });
 });
 
 Route::get('/about', [AboutController::class, 'about'])->name('about');
-
 Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
 
 // TODO: Users Routes
 Route::prefix('/users')->group(function () {
   Route::get('/', [UsersController::class, 'users'])->name('users.all');
 });
-
 Route::get('/user', [UserController::class, 'user'])->name('user');
 
 
