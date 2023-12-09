@@ -1,5 +1,9 @@
 @extends('layouts.layout')
 
+@section('page_title')
+  "All User List"
+@endsection
+
 @section('content')
   <h2>User List</h2>
   @if(isset($users))
