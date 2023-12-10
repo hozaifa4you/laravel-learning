@@ -14,9 +14,6 @@
         <a class="nav-link" href="{{route('posts')}}">Posts</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('user')}}">User</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="{{route('users.all')}}">Users</a>
       </li>
       <li class="nav-item">
