@@ -1,8 +1,48 @@
 @extends('layouts.layout')
 
 @section('content')
-  <div class="">
-    <h2>Create New User</h2>
+  <div class="w-100 d-flex justify-content-center">
+    <div class="w-50">
+      <h4 class="text-center">Create New User</h4>
+      <form class="row g-3" action="{{route('user.new.post')}}" method="POST">
+        @csrf
+        <div class="col-12">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name">
+        </div>
+        <div class="col-md-12">
+          <label for="email-address" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="email-address" placeholder="Enter your email address"
+                 name="email">
+        </div>
+        <div class="col-md-12">
+          <label for="phone" class="form-label">Phone number</label>
+          <input type="text" class="form-control" id="phone" placeholder="Enter your phone number" name="phone">
+        </div>
+        <div class="col-md-12">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter your password" name="password">
+        </div>
+        <div class="col-12">
+          <label for="address" class="form-label">Address</label>
+          <input type="text" class="form-control" id="address" placeholder="Enter your address" name="address">
+        </div>
+
+        <div class="col-md-6">
+          <label for="city" class="form-label">City</label>
+          <input type="text" class="form-control" id="city" placeholder="Enter your city" name="city">
+        </div>
+
+        <div class="col-md-6">
+          <label for="age" class="form-label">Age</label>
+          <input type="text" class="form-control" id="age" placeholder="Enter your age" name="age">
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
   </div>
 @endsection
 

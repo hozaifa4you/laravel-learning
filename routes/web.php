@@ -30,11 +30,19 @@ Route::get('/contact', [ContactController::class, 'contact'])
 Route::prefix('/users')->group(function () {
   Route::get('/', [UsersController::class, 'users'])
     ->name('users.all');
+
   Route::get('/create', [UsersController::class, 'new_user'])
-    ->name('user.new');
+    ->name('user.new.get');
+  Route::post('/create', [UsersController::class, 'create_new_user'])
+    ->name('user.new.post');
+
   Route::get('/update/{user_id}', [UsersController::class, 'update_user'])
     ->whereAlphaNumeric('user_id')
     ->name('user.update');
+  Route::post('/update/{user_id}', [UsersController::class, 'update_user_post'])
+    ->whereAlphaNumeric('user_id')
+    ->name('user.update.post');
+
   Route::get('/delete/{user_id}', [UsersController::class, 'delete_user'])
     ->whereAlphaNumeric('user_id')
     ->name('user.delete');
