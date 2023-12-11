@@ -17,7 +17,7 @@ Route::prefix('posts')->group(function () {
       ->name('posts');
     Route::get('/{post_id?}', 'single_post')
       ->whereAlphaNumeric('post_id')
-      ->name("post");
+      ->name("post.single");
   });
 });
 
