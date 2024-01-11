@@ -57,7 +57,7 @@
 
         <div class="mb-3">
           <label for="image" class="form-label">Select a avatar</label>
-          <input class="form-control @if($errors->has('image')) invalid-feedback @endif" type="file" id="image"
+          <input class="form-control @if($errors->has('image')) is-invalid @endif" type="file" id="image"
                  name="image">
           <span class="invalid-feedback">
             {{$errors->first('image')}}

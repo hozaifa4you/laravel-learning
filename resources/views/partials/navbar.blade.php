@@ -17,7 +17,7 @@
         <a class="nav-link" href="{{route('users.all')}}">Users</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('about')}}">About</a>
+        <a class="nav-link" href="{{route('user.validation')}}">User Validate</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('contact')}}">Contact</a>

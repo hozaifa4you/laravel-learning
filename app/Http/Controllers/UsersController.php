@@ -94,8 +94,18 @@ class UsersController extends Controller
       'email' => 'required|email',
       'city' => 'required',
       'age' => 'required|numeric|min:18',
-//      'image' => 'required|File|mimes:jpeg,jpg,png',
+      'image' => 'required|File|mimes:jpeg,jpg,png',
       'agree' => 'required'
+    ], [
+      'name.required' => 'Name is required',
+      'email.required' => 'Email is required',
+      'city.required' => 'City is required',
+      'age.required' => 'Age is required',
+      'age.min' => 'Age must be greater than 18',
+      'image.required' => 'Image is required',
+      'image.mimes' => 'Image must be jpeg, jpg or png',
+      'image.file' => 'Image must be a file',
+      'agree.required' => 'You must agree to the terms and conditions'
     ]);
 
     dd($request->all());
