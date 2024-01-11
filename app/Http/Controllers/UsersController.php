@@ -85,5 +85,23 @@ class UsersController extends Controller
       return view('pages.userdelete');
     }
   }
+
+//  TODO: user for validation
+  public function user_validation(Request $request): void
+  {
+    $request->validate([
+      'name' => 'required',
+      'email' => 'required|email',
+      'city' => 'required',
+      'age' => 'required|numeric|min:18',
+//      'image' => 'required|File|mimes:jpeg,jpg,png',
+      'agree' => 'required'
+    ]);
+
+    dd($request->all());
+
+  }
 }
+
+
 

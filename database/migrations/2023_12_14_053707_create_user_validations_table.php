@@ -10,12 +10,13 @@ return new class extends Migration {
    */
   public function up(): void
   {
-    Schema::table('users', function (Blueprint $table) {
-      $table->unsignedBigInteger('post_id');
-
-      $table->foreign('post_id')
-        ->references('id')
-        ->on('posts');
+    Schema::create('user_validations', function (Blueprint $table) {
+      $table->id();
+      $table->string('name');
+      $table->string('email');
+      $table->integer('age');
+      $table->string('city');
+      $table->timestamps();
     });
   }
 
@@ -24,8 +25,6 @@ return new class extends Migration {
    */
   public function down(): void
   {
-    Schema::table('users', function (Blueprint $table) {
-      //
-    });
+    Schema::dropIfExists('user_validations');
   }
 };

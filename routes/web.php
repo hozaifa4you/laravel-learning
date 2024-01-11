@@ -60,3 +60,8 @@ Route::fallback(function () {
 
 // TODO: test for route
 Route::get('/test-drive', [UsersController::class, 'users']);
+
+Route::view('/user-validation', 'pages.user-validation')
+  ->name('user.validation');
+Route::post('/user-validation', [UsersController::class, 'user_validation'])
+  ->name('user.validation.store');
