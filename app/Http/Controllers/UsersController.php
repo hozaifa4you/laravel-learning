@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Rules\Uppercase;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -92,7 +93,7 @@ class UsersController extends Controller
   #[NoReturn] public function user_validation(Request $request): void
   {
     $request->validate([
-      'name' => 'required',
+      'name' => ['required', new Uppercase],
       'email' => 'required|email',
       'city' => 'required',
       'age' => 'required|numeric|min:18',
