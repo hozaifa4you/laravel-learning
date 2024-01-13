@@ -20,6 +20,9 @@
         <a class="nav-link" href="{{route('user.validation')}}">User Validate</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{route('user.req.validation')}}">Request Validation</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{route('contact')}}">Contact</a>
       </li>
 

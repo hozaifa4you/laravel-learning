@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use JetBrains\PhpStorm\NoReturn;
 
 class UsersController extends Controller
 {
@@ -87,7 +89,7 @@ class UsersController extends Controller
   }
 
 //  TODO: user for validation
-  public function user_validation(Request $request): void
+  #[NoReturn] public function user_validation(Request $request): void
   {
     $request->validate([
       'name' => 'required',
@@ -110,6 +112,11 @@ class UsersController extends Controller
 
     dd($request->all());
 
+  }
+
+  #[NoReturn] public function user_req_validation(UserRequest $request): void
+  {
+    dd($request->all());
   }
 }
 
